@@ -1,0 +1,45 @@
+# 通用配置、默认配置
+config: items-demo dev 1.0
+
+spring:
+  datasource:
+    #如果不配置阿里的druid，会自动使用默认的数据源 （com.zaxxer.hikari.HikariDataSource）
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      min-idle: 5
+      initial-size: 5
+      driver-class-name: com.mysql.jdbc.Driver
+      max-active: 300
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      filters: stat,wall
+      use-global-data-source-stat: true
+      stat-view-servlet:
+        login-username: admin
+        login-password: 123456
+
+
+
+mybatis:
+  config-location:
+  mapper-locations: classpath:mapping/*.xml,classpath:mapper/*.xml
+  type-aliases-package: cn.com.qr.entity
+  configuration:
+    cache-enabled: true
+    multiple-result-sets-enabled: true
+    aggressive-lazy-loading: true
+    use-column-label: true
+    use-generated-keys: false
+    auto-mapping-behavior: partial
+    default-executor-type: simple
+    map-underscore-to-camel-case: true
+    local-cache-scope: session
+    jdbc-type-for-null: null
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

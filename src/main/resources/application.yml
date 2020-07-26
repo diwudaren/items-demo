@@ -1,0 +1,22 @@
+spring:
+  # 项目名称
+  application:
+    name: items-demo
+
+  profiles:
+    active: dev
+
+---
+# 开发环境配置
+server:
+  port: 8080
+
+spring:
+  profiles: dev
+#
+#  # mysql
+#  master:
+#    datasource:
+#      jdbc-url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8
+#      username: root
+#      password: root
